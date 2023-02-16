@@ -1,17 +1,19 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "discoverlance-com/filament-page-hints",
+    "description": "Create hints for your Filament pages that can serve as a guideline for users.",
     "keywords": [
-        ":vendor_name",
+        "discoverlance-com",
         "laravel",
-        ":package_slug"
+        "filament plugin",
+        "filament admin",
+        "filament-page-hints"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/discoverlance-com/filament-page-hints",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Lance Armah-Abraham",
+            "email": "lanarmah@gmail.com",
             "role": "Developer"
         }
     ],
@@ -22,6 +24,9 @@
     },
     "require-dev": {
         "laravel/pint": "^1.0",
+        "laravel-lang/attributes": "^2.0",
+        "laravel-lang/lang": "^12.0",
+        "laravel-lang/publisher": "^14.0",
         "nunomaduro/collision": "^6.0",
         "nunomaduro/larastan": "^2.0.1",
         "orchestra/testbench": "^7.0",
@@ -35,13 +40,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Discoverlance\\FilamentPageHints\\": "src",
+            "Discoverlance\\FilamentPageHints\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Discoverlance\\FilamentPageHints\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -61,10 +66,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Discoverlance\\FilamentPageHints\\FilamentPageHintsServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "FilamentPageHints": "Discoverlance\\FilamentPageHints\\Facades\\FilamentPageHints"
             }
         }
     },
