@@ -14,7 +14,7 @@ class PageHintFactory extends Factory
     {
         return [
             'title' => '',
-            'description' => '',
+            'hint' => '',
             'route' => '',
             'url' => ''
         ];  

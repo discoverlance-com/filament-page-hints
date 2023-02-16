@@ -14,9 +14,9 @@ return new class extends Migration
 
             // add fields
             $table->string('title',255);
-            $table->string('route')->nullable()->unique();
-            $table->string('url')->nullable()->unique();
-            $table->text('description');
+            $table->string('route');
+            $table->string('url')->nullable();
+            $table->text('hint');
 
             $table->timestamps();
         });
