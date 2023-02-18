@@ -13,7 +13,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Navigation and Resource 
+    | Navigation and Resource
     |--------------------------------------------------------------------------
     */
     'nav.label' => 'Page Hints',
@@ -22,10 +22,11 @@ return [
     'nav.state.empty.description' => 'Welcome, you will find here, hints that will serve as a user guide.',
 
     'modal.buttons.create.label' => 'New Hint',
-    'modal.buttons.edit.label' => 'Edit',
+    'modal.buttons.edit.label' => 'Edit Hint',
+    'modal.buttons.delete.label' => 'Delete Hint',
 
-    'resource.label.hint' => 'Hint',
-    'resource.label.hints' => 'Hints',
+    'resource.label.hint' => 'Page Hint',
+    'resource.label.hints' => 'Page Hints',
 
     'resource.form.title' => 'Title',
     'resource.form.url' => 'Page',

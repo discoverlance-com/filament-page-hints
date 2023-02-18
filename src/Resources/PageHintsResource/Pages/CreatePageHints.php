@@ -12,8 +12,7 @@ class CreatePageHints extends CreateRecord
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
-        $data['url'] = url()->current();
+        $data['url'] = route($data['route']);
         return $data;
     }
-
 }

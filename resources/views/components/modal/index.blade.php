@@ -1,13 +1,6 @@
-@props([
-    'hints',
-])
+@props(['hints'])
 
-<x-filament::modal
-    id="page-hints"
-    close-button
-    slide-over
-    width="md"
->
+<x-filament::modal id="page-hints" close-button slide-over width="md">
     @if ($hints->count())
         <x-slot name="header">
             <x-filament-page-hints::modal.heading />
@@ -23,25 +16,43 @@
                     'dark:border-gray-800' => config('notifications.dark_mode'),
                 ])>
                     <div @class([
-                        'py-2 pl-4 pr-2 bg-primary-50 -mb-px space-y-2',
+                        'py-2 pl-4 pr-2 -mb-px space-y-2',
                         'dark:bg-gray-700' => config('notifications.dark_mode'),
                     ])>
-                        <div class="flex justify-between gap-2">
-                            <p class="text-2xl font-bold">{{ $hint->title }}</p>
-                            <x-filament::button
-                                size="sm"
-                                color="{{ config('filament-page-hints.upsert_hint_button_color') }}"
-                            >
-                                <x-heroicon-o-pencil-alt class="w-5 h-5" />
-                            </x-filament::button>
-                            <x-filament::button
-                                size="sm"
-                                color="{{ config('filament-page-hints.delete_hint_button_color') }}"
-                            >
-                                <x-heroicon-o-trash class="w-5 h-5" />
-                            </x-filament::button>
+                        <div class="flex justify-between gap-2 flex-wrap">
+                            <p class="text-xl font-bold">{{ $hint->title }}</p>
+                            <div>
+                                <x-filament::link
+                                    x-on:click="
+                                    $wire.editPageHint('{{ $hint->uuid }}')
+                                        .then(() => $dispatch('open-modal', { id: 'create-hint' }))
+                                    "
+                                    class="text-sm" color="{{ config('filament-page-hints.upsert_hint_button_color') }}"
+                                    wire:target="editPageHint" tag="button" wire:loading.attr="disabled"
+                                    wire:loading.class="opacity-70 cursor-wait">
+                                    {{ __('filament-page-hints::translations.modal.buttons.edit.label') }}
+                                </x-filament::link>
+
+                                <span>
+                                    &bull;
+                                </span>
+                            </div>
+                            <div>
+                                <x-filament::link
+                                    x-on:click="
+                                        await $wire.deletePageHint('{{ $hint->uuid }}')
+                                    "
+                                    class="text-sm" color="{{ config('filament-page-hints.delete_hint_button_color') }}"
+                                    wire:target="deletePageHint" tag="button" wire:loading.attr="disabled"
+                                    wire:loading.class="opacity-70 cursor-wait">
+                                    {{ __('filament-page-hints::translations.modal.buttons.delete.label') }}
+                                </x-filament::link>
+                            </div>
                         </div>
-                        <div class="prose prose-sm mt-2">
+                        <div @class([
+                            'prose prose-sm mt-2',
+                            'dark:prose-invert' => config('notifications.dark_mode'),
+                        ])>
                             {!! $hint->hint !!}
                         </div>
                     </div>
@@ -51,4 +62,4 @@
     @else
         <x-filament-page-hints::modal.empty-state />
     @endif
-</x-notifications::modal>
+    </x-notifications::modal>

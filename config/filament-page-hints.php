@@ -40,8 +40,6 @@ return [
         'italic',
         'link',
         'orderedList',
-        'redo',
         'strike',
-        'undo',
     ],
 ];

@@ -21,7 +21,7 @@ class FilamentPageHintsServiceProvider extends PluginServiceProvider
     protected array $styles = [
         'filament-page-hints-styles' => __DIR__ . '/../dist/filament-page-hints.css',
     ];
-    
+
     public function configurePackage(Package $package): void
     {
         /*
@@ -33,10 +33,10 @@ class FilamentPageHintsServiceProvider extends PluginServiceProvider
             ->name('filament-page-hints')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_filament_page_hints_table')
+            ->hasMigration('filament_page_hints')
             ->hasCommand(FilamentPageHintsCommand::class)
             ->hasTranslations()
-            ->hasInstallCommand(function(InstallCommand $command) {
+            ->hasInstallCommand(function (InstallCommand $command) {
                 $command
                     ->publishConfigFile()
                     ->publishMigrations()
@@ -55,7 +55,7 @@ class FilamentPageHintsServiceProvider extends PluginServiceProvider
         );
 
         Livewire::listen('component.hydrate.initial', function ($component, $request) {
-            if (! $component instanceof Page) {
+            if (!($component instanceof Page)) {
                 return;
             }
 

@@ -2,30 +2,49 @@
 
 namespace Discoverlance\FilamentPageHints\Http\Livewire;
 
+use Discoverlance\FilamentPageHints\Concerns\HintForm;
 use Livewire\Component;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
-use Discoverlance\FilamentPageHints\Facades\FilamentPageHints;
 use \Discoverlance\FilamentPageHints\Models\PageHint;
-use Filament\Forms\ComponentContainer;
-use Filament\Pages\Page;
 use Filament\Notifications\Notification;
-use Filament\Pages\Actions\CreateAction;
-use Filament\Support\Exceptions\Halt;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Filament\Forms;
 
-
 class PageHints extends Component implements Forms\Contracts\HasForms
 {
+    use Forms\Concerns\InteractsWithForms;
+
     public ?Collection $pageHints;
+    public ?PageHint $model = null;
+    public ?string $title = '';
+    public ?string $hint = '';
+    public ?string $route = '';
+    public ?string $url = '';
 
     public function mount(): void
     {
         $this->pageHints = $this->getPageHintItems();
+
+        $this->model = new PageHint;
+        $current_route = Route::currentRouteName();
+        $current_url = url()->current();
+        $this->form->fill([
+            'title' => $this->model?->title,
+            'hint' => $this->model?->hint,
+            'route' => $this->model?->route ?? $current_route,
+            'url' => $this->model?->url ?? $current_url,
+        ]);
+    }
+
+    protected function getFormSchema(): array
+    {
+        return [
+            HintForm::getTitleComponent(),
+            HintForm::getHintComponent(),
+            Forms\Components\Hidden::make('route'),
+            Forms\Components\Hidden::make('url'),
+        ];
     }
 
     public function getPageHintItems()
@@ -34,17 +53,48 @@ class PageHints extends Component implements Forms\Contracts\HasForms
         $current_url = url()->current();
 
         return PageHint::where('route', $current_route)
-            ->orWhere('url', $current_url)
+            ->where('url', $current_url)
             ->get();
     }
 
-    public function submit(): void {
+    public function submit(): void
+    {
+        $data = $this->form->getState();
+        PageHint::updateOrCreate(['id' => $this->model->id], $data);
 
+        Notification::make()
+            ->title(__('filament-page-hints::translations.notification.upsert'))
+            ->success()
+            ->send();
+        $this->redirectRoute($data['route']);
     }
 
-    public function deletePageHint($id) {
-        
+    public function editPageHint(PageHint $hint): void
+    {
+        $this->model = $hint;
+        $this->form->fill([
+            'title' => $this->model->title,
+            'hint' => $this->model->hint,
+            'route' => $this->model->route,
+            'url' => $this->model->url,
+        ]);
     }
+
+    public function deletePageHint(PageHint $hint): void
+    {
+        $hint->delete();
+        Notification::make()
+            ->title(__('filament-page-hints::translations.notification.delete'))
+            ->success()
+            ->send();
+        $this->redirectRoute($hint->route);
+    }
+
+    protected function getFormModel(): PageHint
+    {
+        return $this->model;
+    }
+
     public function render(): View
     {
         return view('filament-page-hints::page-hints');
