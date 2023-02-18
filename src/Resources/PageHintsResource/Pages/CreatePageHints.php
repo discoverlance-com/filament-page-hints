@@ -9,4 +9,11 @@ use Filament\Resources\Pages\CreateRecord;
 class CreatePageHints extends CreateRecord
 {
     protected static string $resource = PageHintsResource::class;
+
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        $data['url'] = url()->current();
+        return $data;
+    }
+
 }

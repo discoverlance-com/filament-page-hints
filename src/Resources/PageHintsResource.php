@@ -33,13 +33,13 @@ class PageHintsResource extends Resource
                 Card::make()
                     ->schema([
                         Forms\Components\TextInput::make('title')
-                            ->label(__('filament-page-hints::filament-page-hints.resource.form.title'))
-                            ->placeholder(__('filament-page-hints::filament-page-hints.resource.form.title.placeholder.label'))
+                            ->label(__('filament-page-hints::translations.resource.form.title'))
+                            ->placeholder(__('filament-page-hints::translations.resource.form.title.placeholder.label'))
                             ->maxLength(255)
                             ->required(),
                         Forms\Components\TextInput::make('route')
-                            ->label(__('filament-page-hints::filament-page-hints.resource.form.route'))
-                            ->placeholder(__('filament-page-hints::filament-page-hints.resource.form.route.placeholder.label'))
+                            ->label(__('filament-page-hints::translations.resource.form.route'))
+                            ->placeholder(__('filament-page-hints::translations.resource.form.route.placeholder.label'))
                             ->required()
                             ->rules([
                                 function () {
@@ -51,14 +51,14 @@ class PageHintsResource extends Resource
                                 },
                             ]),
                         Forms\Components\TextInput::make('url')
-                            ->label(__('filament-page-hints::filament-page-hints.resource.form.url'))
-                            ->placeholder(__('filament-page-hints::filament-page-hints.resource.form.url.placeholder.label'))
+                            ->label(__('filament-page-hints::translations.resource.form.url'))
+                            ->placeholder(__('filament-page-hints::translations.resource.form.url.placeholder.label'))
                             ->url()
                             ->hidden(fn(Livewire $livewire) => $livewire instanceof Pages\CreatePageHints)
                             ->nullable(),
                         Forms\Components\RichTextEditor::make('hint')
-                            ->label(__('filament-page-hints::filament-page-hints.resource.form.hint'))
-                            ->placeholder(__('filament-page-hints::filament-page-hints.resource.form.hint.placeholder.label'))
+                            ->label(__('filament-page-hints::translations.resource.form.hint'))
+                            ->placeholder(__('filament-page-hints::translations.resource.form.hint.placeholder.label'))
                             ->required()
                             ->toolbarButtons(config('filament-page-hints.toolbar_buttons',[])),
                     ])
@@ -70,23 +70,23 @@ class PageHintsResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')
-                    ->label(trans('filament-page-hints::filament-page-hints.resource.table.title'))
+                    ->label(trans('filament-page-hints::translations.resource.table.title'))
                     ->sortable()
                     ->searchable()
                     ->toggleable(),
                 Tables\Columns\TextColumn::make('url')
-                    ->label(trans('filament-page-hints::filament-page-hints.resource.table.url'))
+                    ->label(trans('filament-page-hints::translations.resource.table.url'))
                     ->sortable()
                     ->searchable()
                     ->toggleable(),
                 Tables\Columns\TextColumn::make('route')
-                    ->label(trans('filament-page-hints::filament-page-hints.resource.table.route'))
+                    ->label(trans('filament-page-hints::translations.resource.table.route'))
                     ->sortable()
                     ->searchable()
                     ->toggleable(),
                 Tables\Columns\TextColumn::make('hint')
                     ->html()
-                    ->label(trans('filament-page-hints::filament-page-hints.resource.table.hint'))
+                    ->label(trans('filament-page-hints::translations.resource.table.hint'))
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
@@ -117,20 +117,20 @@ class PageHintsResource extends Resource
     }
     public static function getModelLabel(): string
     {
-        return __('filament-page-hints::filament-page-hints.resource.label.hint');
+        return __('filament-page-hints::translations.resource.label.hint');
     }
 
     public static function getPluralModelLabel(): string
     {
-        return __('filament-page-hints-menu::filament-page-hints.resource.label.hints');
+        return __('filament-page-hints-menu::translations.resource.label.hints');
     }
     protected static function getNavigationLabel(): string
     {
-        return __('filament-page-hints::filament-page-hints.nav.label');
+        return __('filament-page-hints::translations.nav.label');
     }
 
     protected static function getNavigationIcon(): string
     {
-        return __('filament-page-hints::filament-page-hints.nav.icon');
+        return __('filament-page-hints::translations.nav.icon');
     }
 }

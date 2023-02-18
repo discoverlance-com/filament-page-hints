@@ -9,5 +9,9 @@ class PageHint extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    protected $table = "filament_page_hints_table";
+    
+    public function getTable()
+    {
+        return config('filament-page-hints.table_name', parent::getTable());
+    }
 }

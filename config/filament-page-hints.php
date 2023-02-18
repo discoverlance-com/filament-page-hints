@@ -5,6 +5,10 @@
  */
 return [
     /**
+     * Filament page table
+     */
+    'table_name' => 'filament_page_hints',
+    /**
      * This is the icon of the hint button in the topbar
      */
     'hint_icon' => 'heroicon-o-information-circle',
@@ -12,7 +16,7 @@ return [
     /**
      * The class of the hint button can be changed here
      */
-    'top_hint_class' => 'w-5 h-5 cursor-pointer text-gray-800 dark:white',
+    'hint_class' => 'w-5 h-5 cursor-pointer text-gray-800 dark:text-white',
 
     /**
      * Creating or updating a hint button color can be changed here

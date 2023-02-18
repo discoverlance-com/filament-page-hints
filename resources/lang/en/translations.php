@@ -18,6 +18,11 @@ return [
     */
     'nav.label' => 'Page Hints',
     'nav.icon' => 'heroicon-o-information-circle',
+    'nav.state.empty.heading' => 'No page hints',
+    'nav.state.empty.description' => 'Welcome, you will find here, hints that will serve as a user guide.',
+
+    'modal.buttons.create.label' => 'New Hint',
+    'modal.buttons.edit.label' => 'Edit',
 
     'resource.label.hint' => 'Hint',
     'resource.label.hints' => 'Hints',
@@ -44,5 +49,4 @@ return [
     */
     'notification.upsert' => 'Page hint has been updated successfully.',
     'notification.delete' => 'Page hint deleted.',
-    'notification.empty' => 'Welcome, you will find here, hints that will serve as a user guide.',
 ];
