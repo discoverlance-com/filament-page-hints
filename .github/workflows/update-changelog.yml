@@ -18,6 +18,7 @@ jobs:
         uses: stefanzweifel/changelog-updater-action@v1
         with:
           latest-version: ${{ github.event.release.name }}
+          token: ${{ secrets.PAT }}
           release-notes: ${{ github.event.release.body }}
 
       - name: Commit updated CHANGELOG
@@ -25,5 +26,4 @@ jobs:
         with:
           branch: main
           commit_message: Update CHANGELOG
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           file_pattern: CHANGELOG.md
