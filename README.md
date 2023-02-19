@@ -1,8 +1,6 @@
 # Filament Page Hints for Filament Admin Panel
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/discoverlance/filament-page-hints.svg?style=flat-square)](https://packagist.org/packages/discoverlance/filament-page-hints)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/discoverlance/filament-page-hints/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/discoverlance-com/filament-page-hints/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/discoverlance/filament-page-hints/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/discoverlance-com/filament-page-hints/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/discoverlance/filament-page-hints.svg?style=flat-square)](https://packagist.org/packages/discoverlance/filament-page-hints)
 
 Create hints for your Filament pages that can serve as a guideline for users. You can create hints for each page and it will open a sidebar when the user clicks on it to view hints for a page.
