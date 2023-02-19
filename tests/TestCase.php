@@ -2,13 +2,13 @@
 
 namespace Discoverlance\FilamentPageHints\Tests;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use Discoverlance\FilamentPageHints\FilamentPageHintsServiceProvider;
 use Discoverlance\FilamentPageHints\Http\Livewire\PageHints;
 use Filament\FilamentServiceProvider;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Livewire\Livewire;
 use Livewire\LivewireServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
@@ -17,7 +17,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Discoverlance\\FilamentPageHints\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
+            fn (string $modelName) => 'Discoverlance\\FilamentPageHints\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
 
         // $this->registerLivewireComponents();
@@ -26,6 +26,7 @@ class TestCase extends Orchestra
     protected function registerLivewireComponents(): self
     {
         Livewire::component('page-hints', PageHints::class);
+
         return $this;
     }
 
@@ -43,7 +44,7 @@ class TestCase extends Orchestra
     {
         config()->set('database.default', 'testing');
 
-        $migration = include __DIR__ . '/../database/migrations/create_filament_page_hints_table.php.stub';
+        $migration = include __DIR__.'/../database/migrations/create_filament_page_hints_table.php.stub';
         $migration->up();
     }
 }

@@ -2,21 +2,21 @@
 
 namespace Discoverlance\FilamentPageHints\Resources;
 
-use Discoverlance\FilamentPageHints\Resources\PageHintsResource\Pages;
+use Discoverlance\FilamentPageHints\Concerns\HintForm;
 use Discoverlance\FilamentPageHints\Models\PageHint;
-use Filament\Forms;
+use Discoverlance\FilamentPageHints\Resources\PageHintsResource\Pages;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Discoverlance\FilamentPageHints\Concerns\HintForm;
 
 class PageHintsResource extends Resource
 {
     protected static ?string $model = PageHint::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-information-circle';
-    protected static ?string $recordTitleAttribute = "title";
+
+    protected static ?string $recordTitleAttribute = 'title';
 
     protected static function shouldRegisterNavigation(): bool
     {
@@ -81,6 +81,7 @@ class PageHintsResource extends Resource
             'edit' => Pages\EditPageHints::route('/{record}/edit'),
         ];
     }
+
     public static function getModelLabel(): string
     {
         return __('filament-page-hints::translations.resource.label.hint');
@@ -90,6 +91,7 @@ class PageHintsResource extends Resource
     {
         return __('filament-page-hints::translations.resource.label.hints');
     }
+
     protected static function getNavigationLabel(): string
     {
         return __('filament-page-hints::translations.nav.label');

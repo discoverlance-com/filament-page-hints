@@ -2,9 +2,8 @@
 
 namespace Discoverlance\FilamentPageHints\Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Discoverlance\FilamentPageHints\Models\PageHint;
-
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PageHintFactory extends Factory
 {
@@ -16,7 +15,7 @@ class PageHintFactory extends Factory
             'title' => '',
             'hint' => '',
             'route' => '',
-            'url' => ''
-        ];  
+            'url' => '',
+        ];
     }
 }

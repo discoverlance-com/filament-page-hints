@@ -2,15 +2,15 @@
 
 namespace Discoverlance\FilamentPageHints;
 
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\Commands\InstallCommand;
-use Filament\PluginServiceProvider;
 use Discoverlance\FilamentPageHints\Commands\FilamentPageHintsCommand;
 use Discoverlance\FilamentPageHints\Resources\PageHintsResource;
 use Filament\Facades\Filament;
 use Filament\Pages\Page;
+use Filament\PluginServiceProvider;
 use Illuminate\Support\Facades\Blade;
 use Livewire\Livewire;
+use Spatie\LaravelPackageTools\Commands\InstallCommand;
+use Spatie\LaravelPackageTools\Package;
 
 class FilamentPageHintsServiceProvider extends PluginServiceProvider
 {
@@ -19,7 +19,7 @@ class FilamentPageHintsServiceProvider extends PluginServiceProvider
     ];
 
     protected array $styles = [
-        'filament-page-hints-styles' => __DIR__ . '/../dist/filament-page-hints.css',
+        'filament-page-hints-styles' => __DIR__.'/../dist/filament-page-hints.css',
     ];
 
     public function configurePackage(Package $package): void
@@ -55,7 +55,7 @@ class FilamentPageHintsServiceProvider extends PluginServiceProvider
         );
 
         Livewire::listen('component.hydrate.initial', function ($component, $request) {
-            if (!($component instanceof Page)) {
+            if (! ($component instanceof Page)) {
                 return;
             }
 

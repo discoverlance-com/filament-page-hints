@@ -31,7 +31,7 @@ return [
     /**
      * Rich Text Editor used for hints toolbar buttons can be edited here.
      */
-    "toolbar_buttons" => [
+    'toolbar_buttons' => [
         'blockquote',
         'bold',
         'bulletList',

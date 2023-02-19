@@ -2,16 +2,15 @@
 
 namespace Discoverlance\FilamentPageHints\Concerns;
 
+use Closure;
+use Discoverlance\FilamentPageHints\Resources\PageHintsResource\Pages;
+use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Illuminate\Support\Facades\Route;
-use Closure;
-use Filament\Forms;
-use Discoverlance\FilamentPageHints\Resources\PageHintsResource\Pages;
 use Livewire\Component as Livewire;
 
 class HintForm
 {
-
     public static function getTitleComponent(): \Filament\Forms\Components\TextInput
     {
         return Forms\Components\TextInput::make('title')
@@ -59,14 +58,14 @@ class HintForm
 
     public static function new(): array
     {
-        return array(
+        return [
             Card::make()
                 ->schema([
                     self::getTitleComponent(),
                     self::getRouteComponent(),
                     self::getUrlComponent(),
                     self::getHintComponent(),
-                ])
-        );
+                ]),
+        ];
     }
 }

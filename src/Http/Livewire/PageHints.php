@@ -3,14 +3,14 @@
 namespace Discoverlance\FilamentPageHints\Http\Livewire;
 
 use Discoverlance\FilamentPageHints\Concerns\HintForm;
+use Discoverlance\FilamentPageHints\Models\PageHint;
+use Filament\Forms;
 use Filament\Forms\ComponentContainer;
-use Livewire\Component;
+use Filament\Notifications\Notification;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
-use \Discoverlance\FilamentPageHints\Models\PageHint;
-use Filament\Notifications\Notification;
 use Illuminate\View\View;
-use Filament\Forms;
+use Livewire\Component;
 
 /**
  * @property ComponentContainer $form
@@ -20,10 +20,15 @@ class PageHints extends Component implements Forms\Contracts\HasForms
     use Forms\Concerns\InteractsWithForms;
 
     public ?Collection $pageHints;
+
     public ?PageHint $model = null;
+
     public ?string $title = '';
+
     public ?string $hint = '';
+
     public ?string $route = '';
+
     public ?string $url = '';
 
     public function mount(): void
