@@ -22,7 +22,7 @@
                         <div class="flex justify-between gap-2 flex-wrap">
                             <p class="text-xl font-bold">{{ $hint->title }}</p>
                             <div>
-                                <x-filament::link
+                                <x-filament-page-hints::link
                                     x-on:click="
                                     $wire.editPageHint('{{ $hint->uuid }}')
                                         .then(() => $dispatch('open-modal', { id: 'create-hint' }))
@@ -31,14 +31,14 @@
                                     wire:target="editPageHint" tag="button" wire:loading.attr="disabled"
                                     wire:loading.class="opacity-70 cursor-wait">
                                     {{ __('filament-page-hints::translations.modal.buttons.edit.label') }}
-                                </x-filament::link>
+                                </x-filament-page-hints::link>
 
                                 <span>
                                     &bull;
                                 </span>
                             </div>
                             <div>
-                                <x-filament::link
+                                <x-filament-page-hints::link
                                     x-on:click="
                                         await $wire.deletePageHint('{{ $hint->uuid }}')
                                     "
@@ -46,7 +46,7 @@
                                     wire:target="deletePageHint" tag="button" wire:loading.attr="disabled"
                                     wire:loading.class="opacity-70 cursor-wait">
                                     {{ __('filament-page-hints::translations.modal.buttons.delete.label') }}
-                                </x-filament::link>
+                                </x-filament-page-hints::link>
                             </div>
                         </div>
                         <div @class([
