@@ -3,6 +3,7 @@
 namespace Discoverlance\FilamentPageHints\Http\Livewire;
 
 use Discoverlance\FilamentPageHints\Concerns\HintForm;
+use Filament\Forms\ComponentContainer;
 use Livewire\Component;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
@@ -11,6 +12,9 @@ use Filament\Notifications\Notification;
 use Illuminate\View\View;
 use Filament\Forms;
 
+/**
+ * @property ComponentContainer $form
+ */
 class PageHints extends Component implements Forms\Contracts\HasForms
 {
     use Forms\Concerns\InteractsWithForms;
@@ -30,10 +34,10 @@ class PageHints extends Component implements Forms\Contracts\HasForms
         $current_route = Route::currentRouteName();
         $current_url = url()->current();
         $this->form->fill([
-            'title' => $this->model?->title,
-            'hint' => $this->model?->hint,
-            'route' => $this->model?->route ?? $current_route,
-            'url' => $this->model?->url ?? $current_url,
+            'title' => $this->model->title,
+            'hint' => $this->model->hint,
+            'route' => $this->model->route ?? $current_route,
+            'url' => $this->model->url ?? $current_url,
         ]);
     }
 
