@@ -19,7 +19,7 @@ class FilamentPageHintsServiceProvider extends PluginServiceProvider
     ];
 
     protected array $styles = [
-        'filament-page-hints-styles' => __DIR__ . '/../dist/filament-page-hints.css',
+        'filament-page-hints-styles' => __DIR__.'/../dist/filament-page-hints.css',
     ];
 
     public function configurePackage(Package $package): void
@@ -61,7 +61,7 @@ class FilamentPageHintsServiceProvider extends PluginServiceProvider
         );
 
         Livewire::listen('component.hydrate.initial', function ($component, $request) {
-            if (!($component instanceof Page)) {
+            if (! ($component instanceof Page)) {
                 return;
             }
 
