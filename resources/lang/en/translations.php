@@ -17,7 +17,7 @@ return [
     |--------------------------------------------------------------------------
     */
     'nav.label' => 'Page Hints',
-    'nav.icon' => 'heroicon-o-information-circle',
+    'nav.icon' => 'heroicon-o-question-mark-circle',
     'nav.state.empty.heading' => 'No page hints',
     'nav.state.empty.description' => 'Welcome, you will find here, hints that will serve as a user guide.',
 

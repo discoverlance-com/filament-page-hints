@@ -14,7 +14,7 @@ class PageHintsResource extends Resource
 {
     protected static ?string $model = PageHint::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-information-circle';
+    protected static ?string $navigationIcon = 'heroicon-o-question-mark-circle';
 
     protected static ?string $recordTitleAttribute = 'title';
 

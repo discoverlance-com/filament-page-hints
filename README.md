@@ -47,7 +47,7 @@ return [
     /**
      * This is the icon of the hint button in the topbar
      */
-    'hint_icon' => 'heroicon-o-information-circle',
+    'hint_icon' => 'heroicon-o-question-mark-circle',
 
     /**
      * The class of the hint button can be changed here

@@ -11,12 +11,12 @@ return [
     /**
      * This is the icon of the hint button in the topbar
      */
-    'hint_icon' => 'heroicon-o-information-circle',
+    'hint_icon' => 'heroicon-o-question-mark-circle',
 
     /**
      * The class of the hint button can be changed here
      */
-    'hint_class' => 'w-5 h-5 cursor-pointer text-gray-800 dark:text-white',
+    'hint_class' => 'w-6 h-6 cursor-pointer text-gray-800 dark:text-white',
 
     /**
      * Creating or updating a hint button color can be changed here
