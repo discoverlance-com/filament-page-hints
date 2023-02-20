@@ -125,6 +125,41 @@ To delete a hint:
 -   Click on the hint icon on the topbar.
 -   Click on **Delete Hint**.
 
+### Adding permissions to hint operations
+
+Because there's not a global method for assigning permissions in filament admin panel as you might be using `filament-shield` or a different package to handle your user permissions, for now, this is a suggestive approach to handling this:
+
+You can mostly do this in the blade:
+
+```bash
+// First publish the views _if you have not already done_ so with the command:
+php artisan vendor:publish --tag="filament-page-hints-views"
+```
+
+An example to restrict the create action with **create_hints** permission will be:
+
+```php
+
+// `views/vendor/filament-page-hints/components/modal/actions.blade.php`
+// hide the create action
+@can('create_hints')
+    <div {{ $attributes }}>
+        ... // other blade code here
+    </div>
+@endcan
+
+// `views/vendor/filament-page-hints/page-hints.blade.php`
+// also hide the create/edit modal
+@can('create_hints')
+    <x-filament::modal id="create-hint" width="xl">
+        ... // other blade code here
+    </x-filament::modal>
+@endcan
+
+```
+
+If you want to also hide the edit/delete actions, you can do so in the `views/vendor/filament-page-hints/components/modal/index.blade.php`
+
 ## Testing
 
 ```bash

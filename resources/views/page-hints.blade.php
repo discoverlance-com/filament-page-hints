@@ -7,7 +7,7 @@
     </x-filament-page-hints::modal.trigger>
 
     {{-- Create Page Hint Modal --}}
-    <x-filament::modal id="create-hint" width="lg">
+    <x-filament::modal id="create-hint" width="xl">
         <form wire:submit.prevent="submit">
             {{ $this->form }}
 
