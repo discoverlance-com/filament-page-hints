@@ -69,7 +69,11 @@ class PageHints extends Component implements Forms\Contracts\HasForms
     public function submit(): void
     {
         $data = $this->form->getState();
-        PageHint::updateOrCreate(['id' => $this->model->id], $data);
+        if ($model) {
+            $model->update($data);
+        } else {
+            PageHint::create($data);
+        }
 
         Notification::make()
             ->title(__('filament-page-hints::translations.notification.upsert'))
