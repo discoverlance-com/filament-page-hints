@@ -69,6 +69,7 @@ class PageHints extends Component implements Forms\Contracts\HasForms
     public function submit(): void
     {
         $data = $this->form->getState();
+        $model = PageHint::find($this->model->id);
         if ($model) {
             $model->update($data);
         } else {
