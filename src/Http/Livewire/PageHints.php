@@ -62,7 +62,7 @@ class PageHints extends Component implements Forms\Contracts\HasForms
         $current_url = url()->current();
 
         return PageHint::where('route', $current_route)
-            ->where('url', $current_url)
+            ->orWhere('url', $current_url)
             ->get();
     }
 
