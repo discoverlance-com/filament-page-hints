@@ -80,7 +80,7 @@ class PageHints extends Component implements Forms\Contracts\HasForms
             ->title(__('filament-page-hints::translations.notification.upsert'))
             ->success()
             ->send();
-        $this->redirectRoute($data['route']);
+        $this->redirect($data['url']);
     }
 
     public function editPageHint(PageHint $hint): void
@@ -101,7 +101,7 @@ class PageHints extends Component implements Forms\Contracts\HasForms
             ->title(__('filament-page-hints::translations.notification.delete'))
             ->success()
             ->send();
-        $this->redirectRoute($hint->route);
+        $this->redirect($hint->url);
     }
 
     protected function getFormModel(): PageHint
