@@ -28,7 +28,7 @@
                                         .then(() => $dispatch('open-modal', { id: 'create-hint' }))
                                     "
                                     class="text-sm" color="{{ config('filament-page-hints.upsert_hint_button_color') }}"
-                                    wire:target="editPageHint" tag="button" wire:loading.attr="disabled"
+                                    wire:target="editPageHint('{{ $hint->uuid }}')" tag="button" wire:loading.attr="disabled"
                                     wire:loading.class="opacity-70 cursor-wait">
                                     {{ __('filament-page-hints::translations.modal.buttons.edit.label') }}
                                 </x-filament-page-hints::link>
@@ -43,7 +43,7 @@
                                         await $wire.deletePageHint('{{ $hint->uuid }}')
                                     "
                                     class="text-sm" color="{{ config('filament-page-hints.delete_hint_button_color') }}"
-                                    wire:target="deletePageHint" tag="button" wire:loading.attr="disabled"
+                                    wire:target="deletePageHint('{{ $hint->uuid }}')" tag="button" wire:loading.attr="disabled"
                                     wire:loading.class="opacity-70 cursor-wait">
                                     {{ __('filament-page-hints::translations.modal.buttons.delete.label') }}
                                 </x-filament-page-hints::link>
