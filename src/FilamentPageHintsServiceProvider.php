@@ -2,7 +2,7 @@
 
 namespace Discoverlance\FilamentPageHints;
 
-use Discoverlance\FilamentPageHints\Commands\FilamentPageHintsCommand;
+use Discoverlance\FilamentPageHints\Commands\FilamentPageHintsSeederCommand;
 use Discoverlance\FilamentPageHints\Resources\PageHintsResource;
 use Filament\Facades\Filament;
 use Filament\Pages\Page;
@@ -34,7 +34,7 @@ class FilamentPageHintsServiceProvider extends PluginServiceProvider
             ->hasConfigFile()
             ->hasViews()
             ->hasMigration('create_filament_page_hints_table')
-            ->hasCommand(FilamentPageHintsCommand::class)
+            ->hasCommand(FilamentPageHintsSeederCommand::class)
             ->hasTranslations()
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command

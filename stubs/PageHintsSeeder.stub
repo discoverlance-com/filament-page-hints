@@ -1,0 +1,41 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Discoverlance\FilamentPageHints\Models\PageHint;
+
+class PageHintsSeeder extends Seeder
+{
+    /**
+    * Run the database seeds.
+    *
+    * @return void
+    */
+    public function run()
+    {
+
+        $allPageHints = '{{ AllPageHints }}';
+
+        static::makePageHints($allPageHints);
+
+        $this->command->info('Page Hints Seeding Completed.');
+    }
+
+    protected static function makePageHints(string $allPageHints): void
+    {
+        if (! blank($pageHints = json_decode($allPageHints,true))) {
+
+            PageHint::truncate();
+            foreach ($pageHints as $hint) {
+
+                PageHint::create([
+                    'url' => $hint['url'],
+                    'route' => $hint['route'],
+                    'title' => $hint['title'],
+                    'hint' => $hint['hint']
+                ]);
+            }
+        }
+    }
+}
