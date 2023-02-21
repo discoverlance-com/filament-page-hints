@@ -125,6 +125,12 @@ To delete a hint:
 -   Click on the hint icon on the topbar.
 -   Click on **Delete Hint**.
 
+### Store and Seed database with page hints
+
+As a convienient helper, you can run the command `php artisan filament-page-hints:seeder` and it will load all your current page hints into a seeder class, `database\seeder\PageHintSeeder`.
+
+> NOTE: If you have quotes, like single quote in your hint from the database, you might have to fix this more manually with escape (/). I was not able to find a way to fix that so for now as even `addslashes` was adding double // instead of one /, so ensure that after you generate your seeder class, you check the `$allPageHints` array (json) to make sure there are no issues with quotes.
+
 ### Adding permissions to hint operations
 
 Because there's not a global method for assigning permissions in filament admin panel as you might be using `filament-shield` or a different package to handle your user permissions, for now, this is a suggestive approach to handling this:

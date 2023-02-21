@@ -19,7 +19,7 @@ class FilamentPageHintsSeederCommand extends Command
 
     public function handle(): int
     {
-        $path = database_path('seeders/PageHintsSeeder.php');
+        $path = database_path('seeders/PageHintSeeder.php');
 
         if (! $this->option('force') && $this->checkForCollision(paths: [$path])) {
             return static::INVALID;
@@ -43,16 +43,16 @@ class FilamentPageHintsSeederCommand extends Command
             });
 
         $this->copyStubToApp(
-            stub: 'PageHintsSeeder',
+            stub: 'PageHintSeeder',
             targetPath: $path,
             replacements: [
                 'AllPageHints' => $allPageHints->all(),
             ]
         );
 
-        $this->info('<fg=green;options=bold>PageHintsSeeder</> generated successfully.');
+        $this->info('<fg=green;options=bold>PageHintSeeder</> generated successfully.');
         $this->line('Now you can use it in your deploy script. i.e:');
-        $this->line('<bg=bright-green;options=bold> php artisan db:seed --class=PageHintsSeeder </>');
+        $this->line('<bg=bright-green;options=bold> php artisan db:seed --class=PageHintSeeder </>');
 
         return Command::SUCCESS;
     }
