@@ -2,11 +2,11 @@
 
 namespace Discoverlance\FilamentPageHints\Commands;
 
+use Discoverlance\FilamentPageHints\Models\PageHint;
 use Illuminate\Console\Command;
-use Symfony\Component\Console\Attribute\AsCommand;
 use Illuminate\Filesystem\Filesystem;
-use \Discoverlance\FilamentPageHints\Models\PageHint;
 use Illuminate\Support\Str;
+use Symfony\Component\Console\Attribute\AsCommand;
 
 #[AsCommand(name: 'filament-page-hints:seeder')]
 class FilamentPageHintsSeederCommand extends Command
@@ -21,7 +21,7 @@ class FilamentPageHintsSeederCommand extends Command
     {
         $path = database_path('seeders/PageHintsSeeder.php');
 
-        if (!$this->option('force') && $this->checkForCollision(paths: [$path])) {
+        if (! $this->option('force') && $this->checkForCollision(paths: [$path])) {
             return static::INVALID;
         }
 
@@ -38,7 +38,7 @@ class FilamentPageHintsSeederCommand extends Command
                     'url' => $hint->url,
                     'route' => $hint->route,
                     'title' => $hint->title,
-                    'hint' => addcslashes($hint->hint, "'"),
+                    'hint' => $hint->hint,
                 ];
             });
 
@@ -53,6 +53,7 @@ class FilamentPageHintsSeederCommand extends Command
         $this->info('<fg=green;options=bold>PageHintsSeeder</> generated successfully.');
         $this->line('Now you can use it in your deploy script. i.e:');
         $this->line('<bg=bright-green;options=bold> php artisan db:seed --class=PageHintsSeeder </>');
+
         return Command::SUCCESS;
     }
 
@@ -80,8 +81,8 @@ class FilamentPageHintsSeederCommand extends Command
     {
         $filesystem = new Filesystem();
 
-        if (!$this->fileExists($stubPath = base_path("stubs/{$stub}.stub"))) {
-            $stubPath = __DIR__ . "/../../stubs/{$stub}.stub";
+        if (! $this->fileExists($stubPath = base_path("stubs/{$stub}.stub"))) {
+            $stubPath = __DIR__."/../../stubs/{$stub}.stub";
         }
 
         $stub = Str::of($filesystem->get($stubPath));
