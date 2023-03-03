@@ -62,4 +62,4 @@
     @else
         <x-filament-page-hints::modal.empty-state />
     @endif
-    </x-notifications::modal>
+</x-filament::modal>
