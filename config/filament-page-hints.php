@@ -28,6 +28,27 @@ return [
      * Use this option to control whether you want to show the page hint resource in the navigation.
      */
     'show_resource_in_navigation' => true,
+
+    /**
+     * Specify the sort order of the page hint in the navigation menu.
+     */
+    'navigation_sort' => null,
+
+    /**
+     * Add a badge to the navigation
+     */
+    'navigation_badge' => null,
+
+    /**
+     * Color of the badge in the navigation
+     */
+    'navigation_badge_color' => null,
+
+    /**
+     * The group of the filament page hint navigation menu item
+     */
+    'navigation_group' => null,
+
     /**
      * Rich Text Editor used for hints toolbar buttons can be edited here.
      */
