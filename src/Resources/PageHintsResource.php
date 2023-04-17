@@ -23,6 +23,26 @@ class PageHintsResource extends Resource
         return config('filament-page-hints.show_resource_in_navigation', true);
     }
 
+    protected static function getNavigationSort(): ?int
+    {
+        return config('filament-page-hints.navigation_sort', null);
+    }
+
+    protected static function getNavigationBadge(): ?string
+    {
+        return config('filament-page-hints.navigation_badge', null);
+    }
+
+    protected static function getNavigationBadgeColor(): ?string
+    {
+        return config('filament-page-hints.navigation_badge_color', null);
+    }
+
+    protected static function getNavigationGroup(): ?string
+    {
+        return config('filament-page-hints.navigation_group', null);
+    }
+
     public static function form(Form $form): Form
     {
         return $form
