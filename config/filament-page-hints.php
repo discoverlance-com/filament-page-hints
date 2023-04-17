@@ -35,17 +35,17 @@ return [
     'navigation_sort' => null,
 
     /**
-     * Add a badge to the navigation
+     * Add a badge to the page hint menu item navigation
      */
     'navigation_badge' => null,
 
     /**
-     * Color of the badge in the navigation
+     * Color of the page hint menu item badge in the navigation
      */
     'navigation_badge_color' => null,
 
     /**
-     * The group of the filament page hint navigation menu item
+     * The navigation group of the filament page hint navigation menu item
      */
     'navigation_group' => null,
 
